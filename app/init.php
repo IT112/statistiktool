@@ -12,5 +12,5 @@ function fxAutoload($class)
 }
 spl_autoload_register('fxAutoload');
 
-model::DBConnection::connect('mysql:dbname=statistiktool;host=localhost', 'root', 'meinPW');
+\model\DBConnection::connect('mysql:dbname=statistiktool;host=localhost', 'root', 'meinPW');
 ?>
