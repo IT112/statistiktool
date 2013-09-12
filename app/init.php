@@ -11,4 +11,6 @@ function fxAutoload($class)
     include($file);
 }
 spl_autoload_register('fxAutoload');
+
+model::DBConnection::connect('mysql:dbname=statistiktool;host=localhost', 'root', 'meinPW');
 ?>

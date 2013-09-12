@@ -1,14 +1,22 @@
 <?php
-require_once("Model.php");
+namespace model;
 
-static class QuestionModel extends Model {
+class QuestionModel extends Model {
 	
 	function __construct() {
 		parent::__construct();
 	}
 	
 	public static function getQuestion($id) {
-		$result = $db->query("SELECT * FROM questions WHERE questions.ID = $id");
+	  $sql = '
+	    SELECT *
+	    FROM questions
+	    WHERE
+	      id =  ?';
+		$stmt = DBConnection->getConnection()->prepare($sql);
+		$stmt->bindValue(1, $id, PDO::PARAM_INT);
+		$stmt->execute();
+		return $stmt->fetchAll();
 	}
 }
 ?>

@@ -1,6 +1,5 @@
 <?php
-require_once("../database.inc.php");
-
+namespace model;
 abstract class Model {
 	
 	function __construct() {
