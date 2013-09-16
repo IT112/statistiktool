@@ -1,0 +1,33 @@
+html, body {
+ margin: 0;
+ padding: 0;
+}
+
+#pageWrapper {
+  max-width: 500px;
+  margin: 5px auto;
+}
+
+.question {
+  background-color: #00aaaa;
+  border-radius: 10px;
+  margin: 10px 0;
+  border: 1px solid black;
+}
+
+.question_title {
+  font-size: 120%;
+  padding: 5px 15px;
+}
+
+.answers {
+  background-color: #00bbbb;
+  border-top: 1px solid black;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  padding: 5px;
+}
+
+.answers_submit {
+  width: 100%;
+}
