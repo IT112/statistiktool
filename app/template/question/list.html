@@ -1,0 +1,28 @@
+<form method="post" action="">
+  <?php foreach($questions as $question): ?>
+    <div class="question">
+      <div class="question_title"><?php echo $h->escape($question['title']);?></div>
+      <div class="answers">
+        <?php foreach($question['answers'] as $answer): ?>
+          <?php $id = 'answer_'. $answer['id'];?>
+          <div class="answer">
+            <input type="<?php echo $question['multiple'] ? 'checkbox' : 'radio';?>" <?php if( in_array($answer['id'], $selectedAnswers) ) echo 'checked="checked"';?> id="<?php echo $id;?>" name="answers[]" value="<?php echo $answer['id'];?>">
+            <label class="answer_title" for="<?php echo $id;?>"><?php echo $h->escape($answer['title']);?></label>
+          </div>
+        <?php endforeach; ?>
+      </div>
+    </div>
+  <?php endforeach; ?>
+  
+  <input class="answers_submit" type="submit" value="abschicken">
+</form>
+
+REQUEST:
+<pre>
+<?php print_r($_REQUEST); ?>
+</pre>
+
+SERVER:
+<pre>
+<?php print_r($_SERVER); ?>
+</pre>

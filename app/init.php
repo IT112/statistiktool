@@ -12,5 +12,5 @@ function appAutoload($class)
 }
 spl_autoload_register('appAutoload');
 
-\model\DBConnection::connect('mysql:dbname=statistiktool;host=localhost', 'root', 'meinPW');
+//\model\DBConnection::connect('mysql:dbname=statistiktool;host=localhost', 'root', 'meinPW');
 ?>
