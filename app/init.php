@@ -1,16 +1,16 @@
 <?php
 
-define('FX_ROOT', dirname(__FILE__), true);
+define('APP_ROOT', dirname(__FILE__), true);
 
-function fxAutoload($class)
+function appAutoload($class)
 {
-  $file = FX_ROOT .'/'. $class .'.class.php';
+  $file = APP_ROOT .'/'. $class .'.class.php';
   $file = str_replace('\\', '/', $file);
 
   if( is_readable($file) )
     include($file);
 }
-spl_autoload_register('fxAutoload');
+spl_autoload_register('appAutoload');
 
 \model\DBConnection::connect('mysql:dbname=statistiktool;host=localhost', 'root', 'meinPW');
 ?>

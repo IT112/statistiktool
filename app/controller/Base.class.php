@@ -18,11 +18,11 @@ class Base
     
     $h = $this->h;
        
-    include(FX_ROOT .'/template/layout/begin.html');
+    include(APP_ROOT .'/template/layout/begin.html');
     
-    include(FX_ROOT .'/template/'. $___file_ .'.html');
+    include(APP_ROOT .'/template/'. $___file_ .'.html');
     
-    include(FX_ROOT .'/template/layout/end.html');
+    include(APP_ROOT .'/template/layout/end.html');
   }
   
   private function includeTemplate($___file_)
@@ -30,7 +30,7 @@ class Base
     extract($this->args);
     $h = $this->h;
     
-    include(FX_ROOT .'/template/'. $___file_ .'.html');
+    include(APP_ROOT .'/template/'. $___file_ .'.html');
   }
 }
 ?>
