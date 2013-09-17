@@ -1,4 +1,4 @@
-<form method="post" action="">
+<form method="post" action="<?php echo Utils::getUrl(array('controller' => 'question', 'action' => 'list'));?>">
   <?php foreach($questions as $question): ?>
     <div class="question">
       <div class="question_title"><?php echo Utils::escapeHtml($question['title']);?></div>
