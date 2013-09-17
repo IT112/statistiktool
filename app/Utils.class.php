@@ -65,6 +65,18 @@ class Utils
   {
     return htmlspecialchars($text, ENT_QUOTES | ENT_HTML5, 'UTF-8');
   }
+  
+  
+  public static function flattenArrayRecursive($arr)
+  {
+    $arr = array_values($arr);
+    foreach($arr as $val)
+      if( is_array($val) )
+        $arr = array_merge($arr, self::flattenArrayRecursive($val));
+      else
+        $arr[] = $val;
 
+    return $arr;
+  }
 }
 ?>

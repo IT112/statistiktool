@@ -36,12 +36,22 @@ class QuestionModel extends Model {
       ),
       array(
         'id' => 2,
+        'title' => 'Hasd tu ein Schmarthphone?',
+        'multiple' => false,
+        'answers' => array(
+          array('id' => 7, 'title' => 'ja'),
+          array('id' => 8, 'title' => 'nein'),
+        )
+      ),
+      array(
+        'id' => 3,
         'title' => 'Was fürn OS hat dein Schmarthphone?',
+        'dependsOn' => array(7),
         'multiple' => true,
         'answers' => array(
-          array('id' => 7, 'title' => 'EiOS'),
-          array('id' => 8, 'title' => 'Arndroind'),
-          array('id' => 9, 'title' => 'BirneOS'),
+          array('id' => 9, 'title' => 'EiOS'),
+          array('id' => 10, 'title' => 'Arndroind'),
+          array('id' => 11, 'title' => 'BirneOS'),
         )
       ),
     );
