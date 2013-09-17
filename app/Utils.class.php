@@ -51,14 +51,20 @@ class Utils
     return self::getBaseUrl($url);
   }
   
+  public static function isHttps()
+  {
+    return !empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443;
+  }
+  
   public static function escapeUrl($string)
   {
     return urlencode($string);
   }
   
-  public static function isHttps()
+  public static function escapeHtml($text)
   {
-    return !empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443;
+    return htmlspecialchars($text, ENT_QUOTES | ENT_HTML5, 'UTF-8');
   }
+
 }
 ?>
