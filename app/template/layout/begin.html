@@ -6,6 +6,9 @@
   <link rel="stylesheet" type="text/css" href="<?php echo Utils::getBaseUrl('style.css'); ?>" />
   <script src="<?php echo Utils::getBaseUrl('libs/jquery.js');?>"></script>
   <script src="<?php echo Utils::getBaseUrl('script.js');?>"></script>
+  <?php foreach($this->includedJavascripts AS $js): ?>
+    <script src="<?php echo Utils::getBaseUrl('js/'. $js .'.js');?>"></script>
+  <?php endforeach; ?>
 </head>
 <body>
 <div id="pageWrapper">

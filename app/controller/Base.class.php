@@ -4,9 +4,15 @@ namespace controller;
 class Base
 {
   private $args;
+  private $includedJavascripts = array();
   
   public function __construct()
   {
+  }
+  
+  protected function includeJavascript($name)
+  {
+    $this->includedJavascripts[] = $name;
   }
   
   protected function render($___file_, array $___args_ = array())
@@ -21,7 +27,7 @@ class Base
     include(APP_ROOT .'/template/layout/end.html');
   }
   
-  private function includeTemplate($___file_)
+  protected function includeTemplate($___file_)
   {
     extract($this->args);
 
