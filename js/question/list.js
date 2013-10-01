@@ -7,21 +7,28 @@ function updateVisibility(animated)
       return;
     
     var dependsOn = $elem.attr("data-depends-on").split(",");
-
+    
+    var visible = false;
     for(var i in dependsOn)
     {
       var $answer = $("#answer_"+ dependsOn[i]);
       if( $answer.is(":checked") )
-        if( animated )
-          $elem.slideDown();
-        else
-          $elem.show();
-      else
-        if( animated )
-          $elem.slideUp();
-        else
-          $elem.hide();
+      {
+        visible = true;
+        break;
+      }
     }
+    
+    if( visible )
+      if( animated )
+        $elem.slideDown();
+      else
+        $elem.show();
+    else
+      if( animated )
+        $elem.slideUp();
+      else
+        $elem.hide();
   });
 }
 
