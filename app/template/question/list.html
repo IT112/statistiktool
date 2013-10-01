@@ -7,8 +7,8 @@
         <div class="answers">
           <?php foreach($question['answers'] as $answer): ?>
             <?php $answerId = 'answer_'. $answer['id'];?>
-            <div class="answer">
-              <input type="<?php echo $question['multiple'] ? 'checkbox' : 'radio';?>" <?php if( in_array($answer['id'], $selectedAnswers) ) echo 'checked="checked"';?> id="<?php echo $answerId;?>" name="answers[<?php echo $question['id'];?>]<?php if( $question['multiple'] ) echo '[]';?>" value="<?php echo $answer['id'];?>">
+            <div class="answer_div">
+              <input class="answer" type="<?php echo $question['multiple'] ? 'checkbox' : 'radio';?>" <?php if( in_array($answer['id'], $selectedAnswers) ) echo 'checked="checked"';?> id="<?php echo $answerId;?>" name="answers[<?php echo $question['id'];?>]<?php if( $question['multiple'] ) echo '[]';?>" value="<?php echo $answer['id'];?>">
               <label class="answer_title" for="<?php echo $answerId;?>"><?php echo Utils::escapeHtml($answer['title']);?></label>
             </div>
           <?php endforeach; ?>

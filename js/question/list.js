@@ -1,5 +1,7 @@
 function updateVisibility(animated)
 {
+  shadowedAnwsers = [];  
+  
   $(".question").each(function() {
     var $elem = $(this);
     
@@ -11,8 +13,9 @@ function updateVisibility(animated)
     var visible = false;
     for(var i in dependsOn)
     {
-      var $answer = $("#answer_"+ dependsOn[i]);
-      if( $answer.is(":checked") )
+      var answerId = "answer_"+ dependsOn[i];
+      var $answer = $("#"+ answerId);
+      if( shadowedAnwsers.indexOf(answerId) < 0 && $answer.is(":checked") )
       {
         visible = true;
         break;
@@ -25,10 +28,16 @@ function updateVisibility(animated)
       else
         $elem.show();
     else
+    {
       if( animated )
         $elem.slideUp();
       else
         $elem.hide();
+      
+      $elem.find(".answer").each(function() {
+        shadowedAnwsers.push($(this).attr("id"));
+      });
+    }
   });
 }
 
