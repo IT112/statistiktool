@@ -1,22 +1,29 @@
-<div id="questions">
-  <form method="post" action="<?php echo Utils::getUrl(array('controller' => 'question', 'action' => 'list'));?>">
-    <?php foreach($questions as $question): ?>
-      <?php $questionId = 'question_'. $question['id'];?>
-      <div class="question" id="<?php echo $questionId;?>" <?php if( !empty($question['dependsOn']) ) echo 'data-depends-on="', join(',', $question['dependsOn']), '"'; ?>>
-        <div class="question_title"><?php echo Utils::escapeHtml($question['title']);?></div>
-        <div class="answers">
-          <?php foreach($question['answers'] as $answer): ?>
-            <?php $answerId = 'answer_'. $answer['id'];?>
-            <div class="answer_div">
-              <input class="answer" type="<?php echo $question['multiple'] ? 'checkbox' : 'radio';?>" <?php if( in_array($answer['id'], $selectedAnswers) ) echo 'checked="checked"';?> id="<?php echo $answerId;?>" name="answers[<?php echo $question['id'];?>]<?php if( $question['multiple'] ) echo '[]';?>" value="<?php echo $answer['id'];?>">
-              <label class="answer_title" for="<?php echo $answerId;?>"><?php echo Utils::escapeHtml($answer['title']);?></label>
-            </div>
-          <?php endforeach; ?>
+<div class="row">
+  <div id="questions" class="col-xs-12 col-sm-6 col-md-8 col-md-offset-2">
+    <form method="post" action="<?php echo Utils::getUrl(array('controller' => 'question', 'action' => 'list'));?>">
+      <?php foreach($questions as $question): ?>
+        <?php $questionId = 'question_'. $question['id'];?>
+        <div class="question" id="<?php echo $questionId;?>" <?php if( !empty($question['dependsOn']) ) echo 'data-depends-on="', join(',', $question['dependsOn']), '"'; ?>>
+          <div class="question_title"><h4><?php echo Utils::escapeHtml($question['title']);?></h4></div>
+          <div class="answers">
+            <?php foreach($question['answers'] as $answer): ?>
+              <?php $answerId = 'answer_'. $answer['id'];?>
+              <div class="answer_div <?php echo $question['multiple'] ? 'checkbox' : 'radio';?>">
+                <label class="answer_title" for="<?php echo $answerId;?>">
+                  <input type="<?php echo $question['multiple'] ? 'checkbox' : 'radio';?>" name="answers[<?php echo $question['id'];?>]<?php if( $question['multiple'] ) echo '[]';?>" class="answer" id="<?php echo $answerId;?>" value="<?php echo $answer['id'];?>" <?php if( in_array($answer['id'], $selectedAnswers) ) echo 'checked="checked"';?>>
+                  <?php echo Utils::escapeHtml($answer['title']);?>
+                </label>
+                
+                <label ></label>
+              </div>
+            <?php endforeach; ?>
+          </div>
         </div>
-      </div>
-    <?php endforeach; ?>
-    <input class="answers_submit" type="submit" value="abschicken">
-  </form>
+      <?php endforeach; ?>
+      <br />
+      <input class="answers_submit btn btn-success btn-lg btn-block" type="submit" value="abschicken">
+    </form>
+  </div>
 </div>
 
 REQUEST:

@@ -1,15 +1,28 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <title>Umfrage</title>
-  <link rel="stylesheet" type="text/css" href="<?php echo Utils::getBaseUrl('style.css'); ?>" />
-  <script src="<?php echo Utils::getBaseUrl('libs/jquery.js');?>"></script>
-  <?php foreach($this->includedJavascripts AS $js): ?>
-    <script src="<?php echo Utils::getBaseUrl('js/'. $js .'.js');?>"></script>
-  <?php endforeach; ?>
-</head>
-<body>
-<div id="pageWrapper">
-  <div id="contentWrapper">
-    <h2><?php echo Utils::escapeHtml($title); ?></h2>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+    <title>Umfrage</title>
+  
+    <link rel="stylesheet" type="text/css" href="<?php echo Utils::getBaseUrl('style.css'); ?>" />
+    <link href="<?php echo Utils::getBaseUrl('libs/bootstrap.min.css');?>" rel="stylesheet" media="screen">
+  
+    <script src="<?php echo Utils::getBaseUrl('libs/jquery.js');?>"></script>
+    <script src="<?php echo Utils::getBaseUrl('libs/bootstrap.min.js');?>"></script>
+  
+    <?php foreach($this->includedJavascripts AS $js): ?>
+      <script src="<?php echo Utils::getBaseUrl('js/'. $js .'.js');?>"></script>
+    <?php endforeach; ?>
+    
+    <?php
+      $title = "Marketingumfrage zur Smartphonenutzung";
+    ?>
+  </head>
+  <body>
+  <div id="pageWrapper">
+    <div id="contentWrapper">
+      <div class="navbar">
+        <h2><?php echo Utils::escapeHtml($title); ?></h2>
+      </div>

@@ -23,7 +23,7 @@ class QuestionModel extends Model {
     return array(
       array(
         'id' => 1,
-        'title' => 'wie ald bisd tu?',
+        'title' => 'Wie alt bist du?',
         'multiple' => false,
         'answers' => array(
           array('id' => 1, 'title' => '1-4'),
@@ -36,27 +36,27 @@ class QuestionModel extends Model {
       ),
       array(
         'id' => 2,
-        'title' => 'Hasd tu ein Schmarthphone?',
+        'title' => 'Hast du ein Smartphone?',
         'multiple' => false,
         'answers' => array(
-          array('id' => 7, 'title' => 'ja'),
-          array('id' => 8, 'title' => 'nein'),
+          array('id' => 7, 'title' => 'Ja'),
+          array('id' => 8, 'title' => 'Nein'),
         )
       ),
       array(
         'id' => 3,
-        'title' => 'Was fürn OS hat dein Schmarthphone?',
+        'title' => 'Was fuer ein OS hat dein Smartphone?',
         'dependsOn' => array(7),
         'multiple' => true,
         'answers' => array(
-          array('id' => 9, 'title' => 'EiOS'),
-          array('id' => 10, 'title' => 'Arndroind'),
+          array('id' => 9, 'title' => 'iOS'),
+          array('id' => 10, 'title' => 'Android'),
           array('id' => 11, 'title' => 'BirneOS'),
         )
       ),
       array(
         'id' => 4,
-        'title' => 'ANdroid version?!',
+        'title' => 'Welche Android version?!',
         'dependsOn' => array(10),
         'multiple' => false,
         'answers' => array(

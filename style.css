@@ -3,16 +3,23 @@ html, body {
  padding: 0;
 }
 
+footer {
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
 #pageWrapper {
-  max-width: 500px;
   margin: 5px auto;
 }
 
+#startSurfaceButton {
+	margin-top: 50px;
+}
+
 .question {
-  background-color: #00aaaa;
+  background-color: rgb(238, 238, 238); 
   border-radius: 10px;
   margin: 10px 0;
-  border: 1px solid black;
 }
 
 .question_title {
@@ -21,13 +28,9 @@ html, body {
 }
 
 .answers {
-  background-color: #00bbbb;
-  border-top: 1px solid black;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
   padding: 5px;
 }
 
 .answers_submit {
-  width: 100%;
+  
 }
