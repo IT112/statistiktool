@@ -54,6 +54,17 @@ class QuestionModel extends Model {
           array('id' => 11, 'title' => 'BirneOS'),
         )
       ),
+      array(
+        'id' => 4,
+        'title' => 'ANdroid version?!',
+        'dependsOn' => array(10),
+        'multiple' => false,
+        'answers' => array(
+          array('id' => 12, 'title' => '2'),
+          array('id' => 13, 'title' => '4.1'),
+          array('id' => 14, 'title' => '4.2'),
+        )
+      ),
     );
   }
 }
