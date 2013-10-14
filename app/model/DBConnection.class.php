@@ -1,5 +1,6 @@
 <?php
 namespace model;
+use \PDO;
 
 class DBConnection extends Model
 {
@@ -7,7 +8,7 @@ class DBConnection extends Model
 
   public static function connect($dsn, $username, $password, array $options = array())
   {
-    self::$connection = new \PDO($dsn, $user, $password, $options);
+    self::$connection = new \PDO($dsn, $username, $password, $options);
     self::$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     self::$connection->exec('SET NAMES utf8');
   }

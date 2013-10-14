@@ -8,18 +8,17 @@ function updateVisibility(animated)
     if( !$elem.attr("data-depends-on") )
       return;
     
-    var dependsOn = $elem.attr("data-depends-on").split(",");
-    
     var visible = false;
-    for(var i in dependsOn)
-    {
-      var answerId = "answer_"+ dependsOn[i];
-      var $answer = $("#"+ answerId);
-      if( shadowedAnwsers.indexOf(answerId) < 0 && $answer.is(":checked") )
-      {
-        visible = true;
-        break;
-      }
+    
+    var $question = $("#question_" + $elem.attr("data-depends-on").split(","));
+  
+    for(var u = 0; u < $question[0].children[1].children.length; u++)  {
+  	    var answer = $question[0].children[1].children[u].children[0].children[0];
+	  
+        if( shadowedAnwsers.indexOf(answer.id) < 0 &&  answer.checked ) {
+            visible = true;
+            break;
+        }
     }
     
     if( visible )

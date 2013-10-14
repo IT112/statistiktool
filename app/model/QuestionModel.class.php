@@ -9,7 +9,7 @@ class QuestionModel extends Model {
   
   public static function getQuestion($id) {
     $sql = '
-      SELECT *
+      SELECT id, question, multiple, dependsOn
       FROM questions
       WHERE
         id =  ?';
@@ -20,52 +20,33 @@ class QuestionModel extends Model {
   }
   
   public static function getAllQuestions() {
-    return array(
-      array(
-        'id' => 1,
-        'title' => 'Wie alt bist du?',
-        'multiple' => false,
-        'answers' => array(
-          array('id' => 1, 'title' => '1-4'),
-          array('id' => 2, 'title' => '5-6'),
-          array('id' => 3, 'title' => '7-9'),
-          array('id' => 4, 'title' => '10-12'),
-          array('id' => 5, 'title' => '13-45'),
-          array('id' => 6, 'title' => '46-199'),
-        )
-      ),
-      array(
-        'id' => 2,
-        'title' => 'Hast du ein Smartphone?',
-        'multiple' => false,
-        'answers' => array(
-          array('id' => 7, 'title' => 'Ja'),
-          array('id' => 8, 'title' => 'Nein'),
-        )
-      ),
-      array(
-        'id' => 3,
-        'title' => 'Was fuer ein OS hat dein Smartphone?',
-        'dependsOn' => array(7),
-        'multiple' => true,
-        'answers' => array(
-          array('id' => 9, 'title' => 'iOS'),
-          array('id' => 10, 'title' => 'Android'),
-          array('id' => 11, 'title' => 'BirneOS'),
-        )
-      ),
-      array(
-        'id' => 4,
-        'title' => 'Welche Android version?!',
-        'dependsOn' => array(10),
-        'multiple' => false,
-        'answers' => array(
-          array('id' => 12, 'title' => '2'),
-          array('id' => 13, 'title' => '4.1'),
-          array('id' => 14, 'title' => '4.2'),
-        )
-      ),
-    );
+  	$sql = 'SELECT id, question, multiple, dependsOn, freieEingabe FROM questions;';
+  	$stmt = DBConnection::getConnection()->prepare($sql);
+  	$stmt->execute();
+  	$data = $stmt->fetchAll();
+  	
+  	$response = array();
+  	for($i = 0; $i < count($data); $i++) {
+  		$response[$i]['id'] = $data[$i][0];
+  		$response[$i]['title'] = $data[$i][1];
+  		$response[$i]['multiple'] = $data[$i][2];
+  		$response[$i]['dependsOn'] = array($data[$i][3]);
+  		
+  		
+  		$sql = 'SELECT * FROM answers WHERE fk_question_id = ?';
+  		$stmt = DBConnection::getConnection()->prepare($sql);
+  		$stmt->bindValue(1, $data[$i][0], \PDO::PARAM_INT);
+  		$stmt->execute();
+  		
+  		$answerData = $stmt->fetchAll();
+  		
+  		for($u = 0; $u < count($answerData); $u++) {
+  			$response[$i]['answers'][$u]['id'] = $answerData[$u]['id'];
+  			$response[$i]['answers'][$u]['title'] = $answerData[$u]['answer'];
+  		}
+  	}
+  	
+  	return $response;
   }
 }
 ?>
